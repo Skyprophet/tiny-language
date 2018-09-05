@@ -1,7 +1,7 @@
 # Design Point
 
-- a tiny, very easy-to-compile imperative language intended for
-high-performance integer computations
+- a tiny, mostly-static, very easy-to-compile imperative language
+intended for high-performance integer computations
 
 - safe: any unsafe action such as out-of-bounds array access leads to
 program termination with a diagnostic
@@ -15,43 +15,35 @@ the lexer
 
 # Syntax
 
+```
 program :=
      function+
 
 function :=
      type name(arg1 [, arg2 ...]) {
-       stmt
+       stmt*
      }
 
 stmt :=
-     type name
-     array name[expr]
+     { \n stmt }\n
+     type name [, name ...]
+     array name\[expr\] [, name\[expr\] ...]
      ...
      print((string|expr)*)
 
 expr :=
      ...
      sizeof(id)
-
-type name(type name, ...) {
-     stmt
-}
-
-type name
-
-int main() {
-}
+     input()
+```
 
 # Types
 
-bool
-int (64-bit 2's complement)
-array (array of int)
-void
+- bool
+- int (64-bit 2's complement)
+- array (of int, arrays are sized but the size is not part of the type)
+- void
 
-array semantics:
-  arrays are sized, but this isn't part of the type
-  OOB access kills the program
+# More Requirements
 
-global namespace:
-
+- every program must contain exactly one function called "main"
