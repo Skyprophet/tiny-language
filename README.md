@@ -80,6 +80,7 @@ ident :=
 - an array may escape the block where it was defined (through
   assignment) but must never escape its function
 - there are no global variables
+- variable shadowing is a compile-time error
 
 # THE FUTURE
 
