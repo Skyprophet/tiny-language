@@ -53,10 +53,14 @@ expr :=
      ident\[expr\]
      ident([expr, ...])
      (expr binop expr)
+     (unaryop expr)
 
 binop :=
      + - * ^ / % & | == > >= < <= !
     (caret is exponentiation, we have no xor operator)
+
+unaryop :=
+    - !
     (bang is Boolean not)
 
 ident :=
