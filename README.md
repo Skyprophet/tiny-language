@@ -34,16 +34,20 @@ stmt :=
      { \n stmt }\n
      type name [, name ...]
      array name\[expr\] [, name\[expr\] ...]
-     ...
      print((string|expr)*)
      if (expr) {\n stmt* }\n [else {\n stmt }]
      while (expr) {\n stmt* }
      for (ident : expr) {\n stmt* }
      ident := expr
      ident\[expr\] := expr
+     expr
 
 expr :=
-     ...
+     true
+     false
+     -?[0-9]+
+     ident
+     (expr ? expr : expr)
      sizeof(ident)
      input()
      ident\[expr\]
@@ -70,15 +74,13 @@ ident :=
 - identifiers cannot be keywords
 - every program must contain exactly one function called "main"
 - recursion is allowed
-- arrays are passed and assigned by reference
+- arrays cannot be assigned
+- arrays are passed to functions by reference
 - when the program first passes an array definition, an array of the
   specified size is allocated and initialized to all zero
-- if the program passes the same array definition additional times,
-  new storage is not allocated but the array contents are re-initialized to zero
-- names are visible using block scope, but arrays live exactly as long
-  as the function in which they are defined
-- an array may escape the block where it was defined (through
-  assignment) but must never escape its function
+- arrays are deallocated at the end of their block
+- arrays must not escape their block
+- names are visible using block scope
 - there are no global variables
 - variable shadowing is a compile-time error
 
