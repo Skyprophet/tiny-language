@@ -41,6 +41,7 @@ stmt :=
      ident := expr
      ident\[expr\] := expr
      expr
+     ;.*
 
 expr :=
      true
