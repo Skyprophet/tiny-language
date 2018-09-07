@@ -56,7 +56,7 @@ expr :=
      (unaryop expr)
 
 binop :=
-     + - * ^ / % & | == > >= < <= !
+     + - * ^ / % & | == > >= < <=
     (caret is exponentiation, we have no xor operator)
 
 unaryop :=
