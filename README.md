@@ -42,6 +42,7 @@ stmt :=
      ident\[expr\] := expr
      expr
      ;.*
+     return expr
 
 expr :=
      true
