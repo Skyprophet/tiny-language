@@ -66,7 +66,7 @@ unaryop :=
     (bang is Boolean not)
 
 ident :=
-     [a-zA-Z][a-zA-Z0-9]*
+     [a-zA-Z_][a-zA-Z0-9_]*
 
 ```
 
