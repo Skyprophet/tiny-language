@@ -20,7 +20,7 @@ program :=
      function+
 
 function :=
-     type ident(arg1 [, arg2 ...]) {
+     type ident(type ident [, type ident ...]) {
        stmt*
      }
 
@@ -32,8 +32,8 @@ type :=
 
 stmt :=
      { \n stmt }\n
-     type name [, name ...]
-     array name\[expr\] [, name\[expr\] ...]
+     type ident [, ident ...]
+     array ident\[expr\] [, ident\[expr\] ...]
      print((string|expr)*)
      if (expr) {\n stmt* }\n [else {\n stmt }]
      while (expr) {\n stmt* }
@@ -56,7 +56,7 @@ expr :=
      (unaryop expr)
 
 binop :=
-     + - * ^ / % & | == > >= < <=
+     + - * ^ / % & | == != > >= < <=
     (caret is exponentiation, we have no xor operator)
 
 unaryop :=
@@ -84,7 +84,7 @@ ident :=
   specified size is allocated and initialized to all zero
 - arrays are deallocated at the end of their block
 - arrays must not escape their block
-- names are visible using block scope
+- variables are visible using block scope
 - there are no global variables
 - variable shadowing is a compile-time error
 
