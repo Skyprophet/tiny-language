@@ -20,7 +20,7 @@ program :=
      function+
 
 function :=
-     type ident(type ident [, type ident ...]) {
+     type ident(type ident <, type ident>*) {
        stmt*
      }
 
@@ -31,10 +31,10 @@ type :=
   void
 
 stmt :=
-     { \n <stmt \n>* }\n
-     type ident [, ident ...]
-     array ident\[expr\] [, ident\[expr\] ...]
-     print(<string|expr>*)
+     { \n <stmt \n>* }\n (NOTE: angular braces are used for grouping)
+     type ident <, ident>*
+     array ident\[expr\] <, ident\[expr\]>*
+     print(<string|expr> <, <string|expr> >*
      if (expr) stmt [else stmt]
      while (expr) stmt
      for (ident : expr) stmt
@@ -53,7 +53,7 @@ expr :=
      sizeof(ident)
      input()
      ident\[expr\]
-     ident([expr, ...])
+     ident(expr <, expr>*)
      (expr binop expr)
      (unaryop expr)
 
