@@ -31,13 +31,13 @@ type :=
   void
 
 stmt :=
-     { \n stmt }\n
+     { \n (stmt \n)* }\n
      type ident [, ident ...]
      array ident\[expr\] [, ident\[expr\] ...]
      print((string|expr)*)
-     if (expr) {\n stmt* }\n [else {\n stmt }]
-     while (expr) {\n stmt* }
-     for (ident : expr) {\n stmt* }
+     if (expr) stmt [else stmt]
+     while (expr) stmt
+     for (ident : expr) stmt
      ident := expr
      ident\[expr\] := expr
      expr
