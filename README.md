@@ -17,7 +17,7 @@ the lexer
 
 ```
 program :=
-     function+
+     <function \n>+ (NOTE: angular braces are used for grouping)
 
 function :=
      type ident(type ident <, type ident>*) stmtblock
@@ -29,7 +29,7 @@ type :=
   void
 
 stmtblock :=
-     {\n <stmt \n>* }\n (NOTE: angular braces are used for grouping)
+     {\n <stmt \n>* }
 
 stmt :=
      stmtblock
