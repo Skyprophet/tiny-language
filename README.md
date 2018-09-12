@@ -29,7 +29,7 @@ type :=
   void
 
 stmtblock :=
-     {\n <stmt \n>* }\n (NOTE: angular braces are used for grouping)
+     {\n <stmt \n>* } (NOTE: angular braces are used for grouping)
 
 stmt :=
      stmtblock
