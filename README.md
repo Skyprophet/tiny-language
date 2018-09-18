@@ -20,6 +20,7 @@ program :=
      <function \n>+ (NOTE: angular braces are used for grouping)
 
 function :=
+     type ident() stmtblock
      type ident(type ident <, type ident>*) stmtblock
 
 type :=
@@ -42,7 +43,7 @@ stmt :=
      ident := expr
      ident\[expr\] := expr
      expr
-     ;.*
+     ;[^\n]*
      return [expr]
 
 expr :=
@@ -54,6 +55,7 @@ expr :=
      sizeof(ident)
      input()
      ident\[expr\]
+     ident()
      ident(expr <, expr>*)
      (expr binop expr)
      (unaryop expr)
@@ -65,6 +67,9 @@ binop :=
 unaryop :=
     - !
     (bang is Boolean not)
+
+string :=
+    " ('\\' ["nt\\] | [^\\\n"])*  "
 
 ident :=
      [a-zA-Z_][a-zA-Z0-9_]*
