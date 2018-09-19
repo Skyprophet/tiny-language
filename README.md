@@ -45,6 +45,7 @@ stmt :=
      expr
      ;[^\n]*
      return [expr]
+     abort(<string|expr> <, <string|expr> >*
 
 expr :=
      true
@@ -95,6 +96,9 @@ ident :=
 - variables are visible using block scope
 - there are no global variables
 - variable shadowing is a compile-time error
+- All function requires a `return` or `abort` statement as its final statement
+- Boolean operators (`&`, `|`, `!`) only works on booleans.
+- Operator `==` and `!=` works for both integers and booleans.
 
 # THE FUTURE
 
